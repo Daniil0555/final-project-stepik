@@ -6,9 +6,11 @@ class MainPageLocators():
 
 
 class LoginPageLocators():
+    LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     INPUT_LOGIN = (By.NAME, "login-username")
     INPUT_PASSWORD = (By.NAME, "login-password")
     BUTTON_LOGIN = (By.NAME, "login_submit")
+    REGISTRATION_FORM = (By.CSS_SELECTOR, "#register_form")
     REGISTRATION_EMAIL = (By.NAME, "registration-email")
     REGISTRATION_PASSWORD = (By.NAME, "registration-password1")
     REGISTRATION_PASSWORD_REPLAY = (By.NAME, "registration-password2")
