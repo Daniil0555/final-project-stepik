@@ -33,3 +33,14 @@ class ProductPage(BasePage):
         assert price_busket == price_product, f"Invalid price, product price {price_product} " \
                                               f"!= price busket {price_busket}"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ABOUT_ADDED_PRODUCT_TO_CARD), \
+            "Success message is presented, but should not be"
+
+    def should_not_be_success_message_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_ABOUT_ADDED_PRODUCT_TO_CARD), \
+            "Success message is presented, but should not be"
+
+    def go_to_see_basket(self):
+        button = self.browser.find_element(*ProductPageLocators.LINK_SEE_BASKET)
+        button.click()
