@@ -15,3 +15,11 @@ class LoginPageLocators():
     REGISTRATION_PASSWORD = (By.NAME, "registration-password1")
     REGISTRATION_PASSWORD_REPLAY = (By.NAME, "registration-password2")
     BUTTON_REGISTRATION = (By.NAME, "registration_submit")
+
+
+class ProductPageLocators():
+    PRICE_PRODUCT = (By.CSS_SELECTOR, ".product_main .price_color")
+    PRICE_BUSKET = (By.CSS_SELECTOR, ".alertinner p strong")
+    NAME_PRODUCT_FROM_PAGE = (By.CSS_SELECTOR, ".product_main h1")
+    BUTTON_ADD_BUSKET = (By.CSS_SELECTOR, ".btn-add-to-basket")
+    MESSAGE_ABOUT_ADDED_PRODUCT_TO_CARD = (By.CSS_SELECTOR, ".alertinner strong")
