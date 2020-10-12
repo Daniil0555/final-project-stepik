@@ -25,7 +25,6 @@ class LoginPage(BasePage):
         self.browser.find_element(*LoginPageLocators.REGISTRATION_PASSWORD).send_keys(password)
         self.browser.find_element(*LoginPageLocators.REGISTRATION_PASSWORD_REPLAY).send_keys(password)
         self.browser.find_element(*LoginPageLocators.BUTTON_REGISTRATION).click()
-        # assert self.browser.find_element(*LoginPageLocators.ALERT_REGISTRATION_SUCCESS), "Registration fail"
 
-    def shold_be_allert_success_registration(self):
-        self.browser.find_element(*LoginPageLocators.ALERT_REGISTRATION_SUCCESS), "Registration fail"
+    def should_be_allert_success_registration(self):
+        assert self.browser.find_element(*LoginPageLocators.ALERT_REGISTRATION_SUCCESS), "Registration fail"

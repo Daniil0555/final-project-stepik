@@ -20,7 +20,7 @@ class ProductPage(BasePage):
         assert self.browser.switch_to.alert, "No click BUTTON ADD BUSKET"
 
     def add_code_in_allert(self):
-        self.solve_quiz_and_get_code()  # В методе уже есть проверка на наличие аллерта
+        self.solve_quiz_and_get_code()
 
     def should_see_message_added_product(self):
         massage = self.browser.find_element(*ProductPageLocators.MESSAGE_ABOUT_ADDED_PRODUCT_TO_CARD).text
@@ -44,3 +44,4 @@ class ProductPage(BasePage):
     def go_to_see_basket(self):
         button = self.browser.find_element(*ProductPageLocators.LINK_SEE_BASKET)
         button.click()
+
