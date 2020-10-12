@@ -2,8 +2,41 @@ from pages.main_page import MainPage
 from pages.product_page import ProductPage
 from pages.base_page import BasePage
 from pages.basket_page import BasketPage
+from pages.login_page import LoginPage
 import time
 import pytest
+import faker
+
+
+class TestUserAddToBasketFromProductPage():
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/"
+        self.page = MainPage(browser, link)
+        self.page.open()
+        self.page.go_to_login_page()
+        self.page = LoginPage(browser, browser.current_url)
+        time.sleep(2)
+        f = faker.Faker()
+        self.page.register_new_user(f.email(), "Fgrta123!!!")
+        self.page.shold_be_allert_success_registration()
+        self.page.should_be_authorized_user()
+        yield
+        # Тут можно дописать что будет после теста
+
+    def test_user_can_add_product_to_basket(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+        page = ProductPage(browser, link)
+        page.open()
+        page.click_button_add_to_busket()
+        page.add_code_in_allert()
+        page.should_see_message_added_product()
+
+    def test_user_cant_see_success_message(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+        page = ProductPage(browser, link)
+        page.open()
+        page.should_not_be_success_message()
 
 
 # def test_guest_should_see_button_add_busket(browser):
@@ -55,7 +88,6 @@ import pytest
 #     page.add_code_in_allert()
 #     page.should_see_message_added_product()
 #     page.should_see_update_price_busket()
-
 
 @pytest.mark.skip
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):

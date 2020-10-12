@@ -18,3 +18,14 @@ class LoginPage(BasePage):
     def should_be_register_form(self):
         assert self.is_element_present(*LoginPageLocators.REGISTRATION_FORM), "No " \
                                                                               "search registration form"
+
+    def register_new_user(self, email, password):
+        input_registration = self.browser.find_element(*LoginPageLocators.REGISTRATION_EMAIL)
+        input_registration.send_keys(email)
+        self.browser.find_element(*LoginPageLocators.REGISTRATION_PASSWORD).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.REGISTRATION_PASSWORD_REPLAY).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.BUTTON_REGISTRATION).click()
+        # assert self.browser.find_element(*LoginPageLocators.ALERT_REGISTRATION_SUCCESS), "Registration fail"
+
+    def shold_be_allert_success_registration(self):
+        self.browser.find_element(*LoginPageLocators.ALERT_REGISTRATION_SUCCESS), "Registration fail"
